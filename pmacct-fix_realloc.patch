@@ -1,0 +1,11 @@
+--- src/bgp/bgp.c.orig	2010-02-17 20:29:36.000000000 +0100
++++ src/bgp/bgp.c	2010-02-17 20:30:54.000000000 +0100
+@@ -283,7 +283,7 @@
+       }
+       else {
+ 	if (peer->buf.len > BGP_MAX_PACKET_SIZE) { 
+-	  realloc(peer->buf.base, BGP_MAX_PACKET_SIZE);
++	  peer->buf.base = realloc(peer->buf.base, BGP_MAX_PACKET_SIZE);
+ 	  memset(peer->buf.base, 0, BGP_MAX_PACKET_SIZE);
+ 	  peer->buf.len = BGP_MAX_PACKET_SIZE;
+ 	}
