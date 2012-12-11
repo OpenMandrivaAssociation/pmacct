@@ -90,3 +90,11 @@ rm -f $RPM_BUILD_ROOT/usr/sbin/rc*acctd
 %attr(600,root,root) %config(noreplace) %{_sysconfdir}/pmacct/nfacctd.conf
 %attr(600,root,root) %config(noreplace) %{_sysconfdir}/pmacct/pmacctd.conf
 %attr(600,root,root) %config(noreplace) %{_sysconfdir}/pmacct/sfacctd.conf
+
+
+%changelog
+* Thu Mar 24 2011 zamir <zamir@mandriva.org> 0.12.5-0mdv2011.0
++ Revision: 648360
+- first build
+- create pmacct
+

@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# pmacctd          Start/Stop the softflow daemon.
+#
+# chkconfig: 2345 91 9
+# description: libpcap
+# processname: pmacctd
+# config: /etc/pmacct/pmacctd.conf
+# pid /var/run/pmacctd.pid
+#
+### BEGIN INIT INFO
+# Required-Start: $network
+# Required-Stop: $network
+# Should-Start: mysqld postgresql ntpd named
+# Should-Stop: mysqld postgresql ntpd named
+# Default-Start: 2 3 4 5
+# Short-Description: Init script for pmacctd daemon.
+# Description: Init script for pmacctd daemon.
+### END INIT INFO
+
+
+BIN=pmacctd
+CONFIG=/etc/pmacct/$BIN.conf
+LOCKFILE=/var/lock/subsys/$BIN
+
+test -x /usr/sbin/$BIN || { echo "$BIN not installed"; }
+test -r $CONFIG || { echo "$CONFIG not existing"; }
+
+. /etc/rc.d/init.d/functions
+
+start() {
+        echo -n $"Starting $BIN transport: "
+        RETVAL=1
+        daemon $BIN -f $CONFIG
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && touch $LOCKFILE
+        echo
+        return $RETVAL
+}
+
+stop() {
+        echo -n "Shutting down $BIN transport: "
+        killproc $BIN
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && touch $LOCKFILE
+        echo
+        return $RETVAL
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  reload)
+	echo -n "Reload service $BIN "
+	killproc -HUP $BIN
+	RETVAL=$?
+	status $BIN
+	RETVAL=$?
+	;;
+  condrestart)
+        [ -f $LOCKFILE ] && restart || :
+        ;;
+  status)
+        status $BIN
+        RETVAL=$?
+        ;;
+  *)
+        echo "Usage: $BIN {start|stop|restart|reload|condrestart|status}"
+        RETVAL=1
+esac
+
+exit $RETVAL

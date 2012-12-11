@@ -1,6 +1,2 @@
 sources:
-  "nfacctd.init:"	a323df00b38370577731e5f4811af96ef1ebd71d
-  "pmacct-0.12.5.tar.gz:"	efbabc0ae624f1b5c1229c0ded26b9bd5debc5cd
-  "pmacctd.init:"	a505b6a5c91e5063f2f633e8e0eff82623b816c6
-  "sfacctd.conf:"	759e72ab23f686487ecfc756596b2ff9ba083980
-  "sfacctd.init:"	715e9a9d3c79b423d3412ca76f08432a7e876d54
+  "pmacct-0.12.5.tar.gz": efbabc0ae624f1b5c1229c0ded26b9bd5debc5cd
