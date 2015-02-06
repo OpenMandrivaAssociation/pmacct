@@ -4,7 +4,7 @@
 Summary: Promiscuous mode IP Accounting package
 Name: pmacct
 Version: 0.12.5
-Release: %mkrel 0
+Release: 1
 License: GPL
 Group: Monitoring
 Source: http://www.pmacct.net/%{name}-%{version}.tar.gz
