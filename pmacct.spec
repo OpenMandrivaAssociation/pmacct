@@ -13,7 +13,7 @@ Source2: pmacctd.init
 Source3: sfacctd.init
 Source4: sfacctd.conf
 Patch1: pmacct-fix_realloc.patch
-URL: http://www.pmacct.net/
+URL: https://www.pmacct.net/
 BuildRoot: %{_tmppath}/%{name}-root
 BuildRequires: mysql-devel
 %if %{with_pgsql}
